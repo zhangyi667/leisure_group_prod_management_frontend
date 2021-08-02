@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {Component} from "react/cjs/react.production.min";
+import Home from './Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ProductList from './product/ProductList';
+import EditProduct from "./product/EditProduct";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/' exact={true} component={Home}/>
+                    <Route path='/products' exact={true} component={ProductList}/>
+                    <Route path='/products/:id' component={EditProduct}/>
+                </Switch>
+            </Router>
+        )
+    }
 }
 
 export default App;
